@@ -1,3 +1,4 @@
-char var1 = "Z"
-int var2 = 27
-int[] var3 = [23 33 7 13]
+int var1 := 27
+char var2 := "a"
+#int[] var3 := [23 33 7 13]
+#string var4 := "Luna Bear"
