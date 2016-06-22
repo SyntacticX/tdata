@@ -1,9 +1,11 @@
-﻿Build started 6/17/2016 4:14:39 PM.
+﻿Build started 6/22/2016 5:51:24 PM.
      1>Project "C:\Users\Research\Documents\tdata\tdata\tdata.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
      1>c:\users\research\documents\tdata\tdata\source.cpp(57): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(114): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(130): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Research\Documents\tdata\Debug\tdata.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Research\Documents\tdata\Debug\tdata.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Research\Documents\tdata\Debug\tdata.lib" /MACHINE:X86 Debug\Source.obj
          tdata.vcxproj -> C:\Users\Research\Documents\tdata\Debug\tdata.exe
@@ -11,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.77
+Time Elapsed 00:00:00.76

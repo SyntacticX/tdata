@@ -33,7 +33,7 @@ vector<string> extractFile(string filePath){
 
 	// Traverse through each line, checks for comments and removes if found
 	if (file.is_open()) {
-		cout << "file " << filePath << " is open\n" << endl;
+		// cout << "file " << filePath << " is open\n" << endl;
 		while (getline(file, line)) {
 			line = removeComments(line);
 			if (!line.empty()){
@@ -41,7 +41,7 @@ vector<string> extractFile(string filePath){
 			}
 		}
 		file.close();
-		cout << "file " << filePath << " is closed, extraction performed\n" << endl;
+		// cout << "file " << filePath << " is closed, extraction performed\n" << endl;
 	}
 	else {
 		cout << "unable to open file " << filePath << "\n" << endl;
@@ -54,8 +54,8 @@ vector<string> extractFile(string filePath){
 string stringTrans(string str){
 	int numeric;
 	string translated;
-	for (int i = 1; i < str.length()-1; i++){ // start at 1 and end at length-1 to discard ' ' or " "
-		if (i > 1){
+	for (int i = 0; i < str.length(); i++){ // start at 1 and end at length-1 to discard ' ' or " "
+		if (i > 0){
 			translated += " "; // if not the first letter of the string, append space before translation
 		}
 		numeric = (int) str.at(i);
@@ -71,7 +71,6 @@ void createInputFile(string inFile)
 	string type;
 	string name;
 
-
 	for (int i = 0; i < size; i++){ // iterate through file lines, create a vector containing all sub strings
 		vector<string> line;
 		istringstream iss(dataLines[i]);
@@ -80,7 +79,9 @@ void createInputFile(string inFile)
 		while (iss){
 			string subString;
 			iss >> subString;
-			line.push_back(subString);
+			if (subString != ""){
+				line.push_back(subString);
+			}
 		}
 
 		if (line[2] == ":="){ // check to make sure ":=" is at the correct position, else throw error
@@ -96,47 +97,57 @@ void createInputFile(string inFile)
 				inputLine += "]"; // closing bracket
 			}
 			else if (type == "char"){
+				line[3].erase(0, 1); // erase starting " | '
+				line[3].erase(line[3].length()-1); // erase ending " | '  
 				inputLine = name; // variable name
 				inputLine += " := "; // equals
 				inputLine += "["; // opening bracket
 				inputLine += stringTrans(line[3]); // value
 				inputLine += "]"; // closing bracket
-
 			}
-
+			else if (type == "int[]"){
+				inputLine = name; // variable name
+				inputLine += " := "; // equals
+				for (int j = 3; j < line.size(); j++){
+					if (j > 3){
+						inputLine += " "; // add space between numbers
+						inputLine += line[j]; // insert value
+					}
+					else {
+						inputLine += line[j]; // insert value
+					}
+				}
+			}
+			else if (type == "string"){
+				line[3].erase(0, 1); // erase starting "
+				line[line.size()-1].erase(line[line.size()-1].length()-1); // erase ending "
+				inputLine = name; // insert variable name
+				inputLine += " := "; // insert equals
+				inputLine += "["; // insert opening bracket
+				for (int j = 3; j < line.size(); j++){ // iterate through each word in string
+					if (j > 3){
+						inputLine += " "; // add space between words
+					}
+					inputLine += stringTrans(line[j]); // insert each value
+				}
+				inputLine += "]"; // insert closing bracket closing bracket
+			}
 		}
 		else {
 			cout << "Error on line " << i + 1 << ": Variable declarations must be of format \"<type> <name> := <value>\"" << endl;
 			break;
 		}
-
 		cout << inputLine << endl;
-	
 	}
-
 
 }
 
 
 int main()
 {
-	string type;
-	string line;
 	string dataFile = "example.tdata";
 
 	createInputFile(dataFile);
-	/*
-	string s = "a";
-	// char x = a.at(0);
-	int i = (int) s.at(0);
 
-	string g;
-
-	g += s;
-	g += " ";
-	g += to_string(i);
-
-	cout << g << endl;
-	*/
 	return 0;
 }
