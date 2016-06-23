@@ -1,4 +1,4 @@
-int var1 := 27 25
+int var1 := 27
 char var2 := 'a'
 int[] var3 := [23 33 7 13]
 string var4 := "a b c d e"
