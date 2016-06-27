@@ -90,15 +90,12 @@ vector<string> createInput(string inFile)
 			inputLine = name = line[1];
 			inputLine += " := ["; // insert equals and opening bracket
 
+			// INT
 			if (type == "int"){ 
-				/* Error Handling */
-				// check that only one value is assigned to int variable
 				if (line.size() != 4){
 					cout << "Problem on line " << i + 1 << ": An int must contain only one value." << endl;
 					exit(EXIT_FAILURE);
 				}
-
-				// check that value is a valid integer
 				for (int x = 0; x < line[3].length(); x++){
 					if (!(isdigit(line[3].at(x)))) {
 						cout << "Problem on line " << i + 1 << ": An int can only contain an integer number." << endl;
@@ -108,39 +105,38 @@ vector<string> createInput(string inFile)
 				inputLine += line[3]; // insert int value
 			}
 
+			// CHAR
 			else if (type == "char"){
-				/* Error Handling*/
 				if (line[3].length() > 3){
 					cout << "Problem on line " << i + 1 << ": A char can only contain one character." << endl;
 					exit(EXIT_FAILURE);
 				}
-				
 				if ((line[3].at(0) != '\'') | (line[3].at(line[3].length()-1) != '\'')) {
 					cout << "Problem on line " << i + 1 << ": A char must be surrounded by single quotation marks." << endl;
 					exit(EXIT_FAILURE);
 				}
-			
-
-				/* Sanitizing */
 				line[3].erase(0, 1); // erase starting '
 				line[3].erase(2, 1); // erase ending '  
 				inputLine += stringTranslate(line[3]); // value
 			}
+
+			// INT array
 			else if (type == "int[]"){
-				/* Error Handling*/
 				if ((line[3].at(0) != '[') | ((line[line.size() - 1].at(line[line.size() - 1].length() - 1)) != ']')) {
 					cout << "Problem on line " << i + 1 << ": A integer array must be surrounded by brackets." << endl;
 					exit(EXIT_FAILURE);
 				}
 
-				/**************************
-				STILL NEED TO CHECK IN BETWEEN BRACKETS :-(
-				***************************/
+				line[3].erase(0, 1); // erase starting [
+				line[line.size() - 1].erase(line[line.size() - 1].length() - 1); // erase ending ]
 
-				/* Sanitizing */
-				line[3].erase(0, 1); // erase starting "
-				line[line.size() - 1].erase(line[line.size() - 1].length() - 1); // erase ending "
 				for (int j = 3; j < line.size(); j++){
+					for (int x = 0; x < line[j].length(); x++){
+						if (!(isdigit(line[j].at(x)))) {
+							cout << "Problem on line " << i + 1 << ": An int array can only contain an integer numbers." << endl;
+							exit(EXIT_FAILURE);
+						}
+					}
 					if (j > 3){
 						inputLine += " "; // add space between numbers
 						inputLine += line[j]; // insert value
@@ -150,15 +146,14 @@ vector<string> createInput(string inFile)
 					}
 				}
 			}
+
+			// STRING
 			else if (type == "string"){
-				/* Error Handling */
 				// Checks for use of double quote marks around string
 				if ((line[3].at(0) != '"') | ((line[line.size() - 1].at(line[line.size() - 1].length() - 1)) != '"')) {
 					cout << "Problem on line " << i + 1 << ": A string must be surrounded by double quotation marks." << endl;
 					exit(EXIT_FAILURE);
 				}
-
-				/* Sanitizing */
 				line[3].erase(0, 1); // erase starting double quote
 				line[line.size()-1].erase(line[line.size()-1].length()-1); // erase ending double quote
 				for (int j = 3; j < line.size(); j++){ // iterate through each word in string
@@ -170,8 +165,6 @@ vector<string> createInput(string inFile)
 			}
 		}
 		else {
-			/* Error Handling */
-			// Checks for single type and single variable name
 			cout << "Error on line " << i + 1 << ": Variable declarations must be of format \"<type> <name> := <value>\"" << endl;
 			exit(EXIT_FAILURE);
 		}
