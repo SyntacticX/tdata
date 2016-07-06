@@ -63,6 +63,22 @@ string stringTranslate(string str){
 	return translated;
 }
 
+string binary(string str){
+	int dec = stoi(str);
+	string bin;
+
+	while (dec > 0){
+		if (dec % 2){
+			bin = "1" + bin;
+		}
+		else {
+			bin = "0" + bin;
+		}
+		dec = dec/2;
+	}
+	return bin;
+}
+
 vector<string> createInput(string inFile)
 {
 	vector<string> input; 
@@ -116,8 +132,23 @@ vector<string> createInput(string inFile)
 					exit(EXIT_FAILURE);
 				}
 				line[3].erase(0, 1); // erase starting '
-				line[3].erase(2, 1); // erase ending '  
+				line[3].erase(1, 1); // erase ending '
 				inputLine += stringTranslate(line[3]); // value
+			}
+
+			// BIN
+			else if (type == "bin"){
+				if (line.size() != 4){
+					cout << "Problem on line " << i + 1 << ": A bin must contain only one value." << endl;
+					exit(EXIT_FAILURE);
+				}
+				for (int x = 0; x < line[3].length(); x++){
+					if (!(isdigit(line[3].at(x)))) {
+						cout << "Problem on line " << i + 1 << ": A bin can only contain an integer number to be converted to binary." << endl;
+						exit(EXIT_FAILURE);
+					}
+				}
+				inputLine += binary(line[3]); // insert int value
 			}
 
 			// INT array

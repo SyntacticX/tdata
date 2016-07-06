@@ -2,3 +2,4 @@ int var1 := 27
 char var2 := 'a'
 int[] var3 := [23 33 7 13 17]
 string var4 := "a b c d e"
+bin var5 := 2047

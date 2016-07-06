@@ -1,14 +1,15 @@
-﻿Build started 6/27/2016 1:48:32 PM.
+﻿Build started 7/6/2016 2:00:04 PM.
      1>Project "C:\Users\Research\Documents\tdata\tdata\tdata.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
      1>c:\users\research\documents\tdata\tdata\source.cpp(56): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\research\documents\tdata\tdata\source.cpp(99): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\research\documents\tdata\tdata\source.cpp(133): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\research\documents\tdata\tdata\source.cpp(134): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\research\documents\tdata\tdata\source.cpp(159): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\research\documents\tdata\tdata\source.cpp(182): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(115): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(145): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(164): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(165): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(190): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\research\documents\tdata\tdata\source.cpp(213): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Research\Documents\tdata\Debug\tdata.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Research\Documents\tdata\Debug\tdata.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Research\Documents\tdata\Debug\tdata.lib" /MACHINE:X86 Debug\Source.obj
          tdata.vcxproj -> C:\Users\Research\Documents\tdata\Debug\tdata.exe
@@ -16,4 +17,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.81
+Time Elapsed 00:00:00.78
